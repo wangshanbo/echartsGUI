@@ -1,8 +1,8 @@
 <template>
-  <header class="lvx-header">
+  <header class="ws-header">
     <nav class="nav-container clearfix">
       <div class="logo">
-        <router-link to="/"><img src="~/assets/img/src/common/logo.png" alt="Lvx"></router-link>
+        <router-link to="/"><img src="~/assets/img/src/common/logo.png" alt="ws"></router-link>
       </div>
       <div class="nav-menu">
         <router-link to="/demo" class="nav-item">示例</router-link>
@@ -16,29 +16,29 @@
 <script>
 import { mapState } from 'vuex'
 export default {
-  data () {
-    return {
-     
+    data () {
+        return {
+
+        }
+    },
+    computed: {
+        ...mapState({
+        })
+    },
+    created () {
+    },
+    mounted () {
+    },
+    watch: {
+    },
+    methods: {
     }
-  },
-  computed: {
-      ...mapState({
-      })
-  },
-  created () {
-  },
-  mounted () {
-  },
-  watch: {
-  },
-  methods: {
-  }
 }
 </script>
 
 <style lang="scss" type="text/scss" scoped>
 @import "~styles/base.scss";
-.lvx-header{
+.ws-header{
   @include responsive-default {
     .nav-container{
       height: 60px;

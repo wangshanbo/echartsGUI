@@ -7,31 +7,31 @@
 <script>
 
 export default {
-  name: 'not-find',
-  metaInfo: {
-      title: '404—云合同'
-  },
-  data () {
-    return {
-      
+    name: 'not-find',
+    metaInfo: {
+        title: '404—云合同'
+    },
+    data () {
+        return {
+
+        }
+    },
+    layout: 'user',
+    created () {
+    },
+    computed: {
+
+    },
+    watch: {
+    },
+    mounted () {
+
+    },
+    methods: {
+
+    },
+    components: {
     }
-  },
-  layout: 'user',
-  created () {
-  },
-  computed: {
-   
-  },
-  watch: {
-  },
-  mounted () {
-   
-  },
-  methods: {
-    
-  },
-  components: {
-  }
 }
 </script>
 

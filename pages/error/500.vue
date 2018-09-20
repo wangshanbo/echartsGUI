@@ -8,31 +8,31 @@
 <script>
 
 export default {
-  name: 'error-500',
-  metaInfo: {
-      title: '云合同'
-  },
-  layout: 'normal',
-  data () {
-    return {
-      
+    name: 'error-500',
+    metaInfo: {
+        title: '云合同'
+    },
+    layout: 'normal',
+    data () {
+        return {
+
+        }
+    },
+    created () {
+    },
+    computed: {
+
+    },
+    watch: {
+    },
+    mounted () {
+
+    },
+    methods: {
+
+    },
+    components: {
     }
-  },
-  created () {
-  },
-  computed: {
-   
-  },
-  watch: {
-  },
-  mounted () {
-   
-  },
-  methods: {
-    
-  },
-  components: {
-  }
 }
 </script>
 

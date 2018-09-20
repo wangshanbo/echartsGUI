@@ -1,6 +1,6 @@
 <template>
   <div id="_ws">
-    <lx-loading ref="loading"></lx-loading>
+    <ws-loading ref="loading"></ws-loading>
     <keep-alive>
       <component v-if="layout" :is="layout"></component>
     </keep-alive>
@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import LxLoading from '~/framework/components/loading'
+import WsLoading from '~/framework/components/loading'
 import { mapState } from 'vuex'
 import _ from 'lodash'
 import Application from '~/framework/gen/index'
@@ -74,7 +74,7 @@ export default {
           if(typeof self.loading === 'function' || typeof self.loading === 'object') {
             customeLoadingInstance = self.loading(self1);
           } else {
-            this.$lvx.loading.start()
+            this.$ws.loading.start()
           }
           if (typeof self.fetchData === 'function') {
             self.fetchData.call(this, to, from, self1)
@@ -82,7 +82,7 @@ export default {
               if(customeLoadingInstance) {
                 customeLoadingInstance.close();
               } else {
-                this.$lvx.loading.finish()
+                this.$ws.loading.finish()
               }
             })
           } else {
@@ -90,7 +90,7 @@ export default {
               if(customeLoadingInstance) {
                 customeLoadingInstance.close();
               } else {
-                this.$lvx.loading.finish()
+                this.$ws.loading.finish()
               }
             }, 0);
           }
@@ -117,7 +117,7 @@ export default {
   },
   mounted () {
     this.$loading = this.$refs.loading
-    this.$lvx.loading = this.$loading
+    this.$ws.loading = this.$loading
   },
   computed: {
     ...mapState({
@@ -183,7 +183,7 @@ export default {
 
   },
   components: {
-    LxLoading
+    WsLoading
   }
 }
 </script>
