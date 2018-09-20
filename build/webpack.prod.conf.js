@@ -117,13 +117,13 @@ const webpackConfig = merge(baseWebpackConfig, {
 
     // new PrerenderSpaPlugin(
     //   // Absolute path to compiled SPA
-    //   path.join(__dirname, '../dist/lvx'),
+    //   path.join(__dirname, '../dist/ws'),
     //   // List of routes to prerender
     //   [ '/', '/login', '/demo' ],
     //   {
     //     ignoreJSErrors: true,
-    //     captureAfterElementExists: '#_lvx',
-    //     indexPath: path.resolve(__dirname, '../dist/lvx/index.html')
+    //     captureAfterElementExists: '#_ws',
+    //     indexPath: path.resolve(__dirname, '../dist/ws/index.html')
     //   }
     // )
   ]
@@ -156,13 +156,13 @@ if (config.build.prerender) {
   webpackConfig.plugins.push(
     // new PrerenderSpaPlugin(
     //   // Absolute path to compiled SPA
-    //   path.join(__dirname, '../dist/lvx'),
+    //   path.join(__dirname, '../dist/ws'),
     //   // List of routes to prerender
     //   [ '/', '/login', '/demo' ],
     //   {
     //     ignoreJSErrors: true,
-    //     captureAfterElementExists: '#_lvx',
-    //     indexPath: path.resolve(__dirname, '../dist/lvx/index.html')
+    //     captureAfterElementExists: '#_ws',
+    //     indexPath: path.resolve(__dirname, '../dist/ws/index.html')
     //   }
 
     // )
@@ -176,7 +176,7 @@ if (config.build.prerender) {
           foo: 'bar'
         },
         headless: false,
-        renderAfterElementExists: '#_lvx',
+        renderAfterElementExists: '#_ws',
         // renderAfterDocumentEvent: 'render-event'
       })
     })

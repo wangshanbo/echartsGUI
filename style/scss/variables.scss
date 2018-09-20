@@ -13,7 +13,7 @@
 //** 灰阶
 $white: #fff !default;
 $gray-100: #ffa000 !default;
-$black:  #000 !default;
+$black: #000 !default;
 
 //** 灰阶
 
@@ -94,11 +94,9 @@ Button
 
 
 //global config
-$prefix-css: lvx !default;
+$prefix-css: ws !default;
 
-
-
-
-
-
-
+.ws-link-active {
+    color: #4081ff;
+    font-size: 20px;
+}

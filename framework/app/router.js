@@ -38,8 +38,8 @@ export function createRouter () {
     // mode: isNotBrowser() ? 'hash': 'history' ,
     mode: 'history',
     base: '',
-    linkActiveClass: 'lx-link-active',
-    linkExactActiveClass: 'lx-link-exact-active',
+    linkActiveClass: 'ws-link-active',
+    linkExactActiveClass: 'ws-link-exact-active',
     scrollBehavior,
     routes: [
 		{

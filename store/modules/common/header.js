@@ -1,14 +1,14 @@
 const header = {
-  state: {
-  },
-  getters: {
+    state: {
+    },
+    getters: {
 
-  },
-  mutations: {
-  },
+    },
+    mutations: {
+    },
 
-  actions: {
-  }
+    actions: {
+    }
 }
 
 export default header

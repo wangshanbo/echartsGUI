@@ -19,28 +19,28 @@
 
 <script>
 export default {
-  name: "demo",
-  metaInfo: {
-    title: "示例"
-  },
-  data() {
-    return {
-      value: ""
-    };
-  },
-  created() {},
-  computed: {},
-  watch: {},
-  mounted() {},
-  methods: {
-    change(v) {
-      console.log(v);
+    name: 'demo',
+    metaInfo: {
+        title: '示例'
     },
-    changeSelect() {
-      this.value = "选项2";
-    }
-  },
-  components: {}
+    data () {
+        return {
+            value: ''
+        };
+    },
+    created () {},
+    computed: {},
+    watch: {},
+    mounted () {},
+    methods: {
+        change (v) {
+            console.log(v);
+        },
+        changeSelect () {
+            this.value = '选项2';
+        }
+    },
+    components: {}
 };
 </script>
 

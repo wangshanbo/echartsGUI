@@ -89,6 +89,7 @@ exports.styleLoaders = function (options) {
   return output
 }
 
+// nodejs报错方法
 exports.createNotifierCallback = function () {
   const notifier = require('node-notifier')
 
@@ -231,8 +232,8 @@ exports.generateRoutes = async function (isProduction) {
       mode: appConfig.router.mode || 'history',
       base: appConfig.router.base || '',
       scrollBehavior: appConfig.router.scrollBehavior,
-      linkActiveClass: appConfig.router.linkActiveClass || 'lx-link-active',
-      linkExactActiveClass: appConfig.router.linkExactActiveClass || 'lx-link-exact-active',
+      linkActiveClass: appConfig.router.linkActiveClass || 'ws-link-active',
+      linkExactActiveClass: appConfig.router.linkExactActiveClass || 'ws-link-exact-active',
       fallback: false,
     },
     hash: hash,

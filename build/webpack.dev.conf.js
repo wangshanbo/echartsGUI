@@ -67,9 +67,10 @@ module.exports = new Promise((resolve, reject) => {
         compilationSuccessInfo: {
           messages: [`Your application is running here: http://${config.dev.host}:${port}`],
         },
-        // onErrors: config.dev.notifyOnErrors
-        // ? utils.createNotifierCallback()
-        // : undefined
+        //是否开启node警告提示
+        onErrors: config.dev.notifyOnErrors
+        ? utils.createNotifierCallback()
+        : undefined
       }))
 
       resolve(devWebpackConfig)

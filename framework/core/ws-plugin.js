@@ -93,7 +93,7 @@ wsPlugin.install = function (Vue, options) {
 
         }
     })
-    Vue.prototype.$lvx = {}
+    Vue.prototype.$ws = {}
     Vue.prototype.$xss = function (val) {  // 4. 添加实例方法，通过把它们添加到 Vue.prototype 上实现
         if (val) {
             return xss(val)
