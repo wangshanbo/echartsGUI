@@ -11,7 +11,7 @@
 import Vue from 'vue'
 
 export default {
-    name: 'ws-loading',
+    name: 'wx-loading',
     data () {
         return {
             percent: 0,
@@ -25,6 +25,7 @@ export default {
     },
     methods: {
         start () {
+            let self = this;
             this.show = true
             this.canSuccess = true
             if (this._timer) {
@@ -69,14 +70,16 @@ export default {
         hide () {
             clearInterval(this._timer)
             this._timer = null
-            setTimeout(() => {
-                this.show = false
+            let self = this;
+            let showLoading = function () {
+                self.show = false
                 Vue.nextTick(() => {
-                    setTimeout(() => {
-                        this.percent = 0
+                    window.setTimeout(function () {
+                        self.percent = 0
                     }, 200)
                 })
-            }, 500)
+            }
+            window.setTimeout(showLoading(), 500)
             return this
         },
         fail () {

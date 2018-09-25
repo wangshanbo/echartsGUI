@@ -1,24 +1,24 @@
-import axios from './http/axios'
+// import axios from './http/axios'
 import xss from 'xss'
 import _ from 'lodash'
-let wsPlugin = {}
+let WsPlugin = {}
 
 // 图片加载错误
 function errorHandel (ev) {
   // console.log(1)
-    this.src = require('~/assets/img/src/common/default_load.png')
+    this.src = require('~/src/assets/img/src/common/default_load.png')
 }
 
-wsPlugin.install = function (Vue, options) {
+WsPlugin.install = function (Vue, options) {
     Vue.myGlobalMethod = function () {  // 1. 添加全局方法或属性，如: vue-custom-element
     // 逻辑...
     }
-    Vue.prototype.$axios = axios;
+  // Vue.prototype.$axios = axios;
     Vue.directive('imgerror', {  // 2. 添加全局资源：指令/过滤器/过渡等，如 vue-touch
         inserted: function (el, binding, vnode, oldVnode) {
             el.addEventListener('error', errorHandel, false)
             let styleEl = getComputedStyle(el, null)
-            if ((!parseInt(styleEl.width) && !parseInt(el.style.width) && !parseInt(el.attributes.width.value)) || (!parseInt(styleEl.height) && !parseInt(el.style.height) && !parseInt(el.attributes.height.value))) {
+            if ((!parseInt(styleEl.width) || (!parseInt(el.style.width) && !parseInt(el.attributes.width.value))) && (!parseInt(styleEl.height) || (!parseInt(el.style.height) && !parseInt(el.attributes.height.value)))) {
                 throw new Error('not define style width & height')
             }
         }
@@ -47,11 +47,14 @@ wsPlugin.install = function (Vue, options) {
   // })
     Vue.filter('timeflier', function (date) {
         let time = '';
+        if (!date) {
+            return '';
+        }
         date = new Date(date)
         let o = {
             'Y+': date.getFullYear(),
-            'M+': date.getMonth() + 1,
-            'd+': date.getDate()
+            'M+': _.padStart(date.getMonth() + 1, 2, '0'),
+            'd+': _.padStart(date.getDate(), 2, '0')
         };
         for (let k in o) {
             time += `${o[k]}-`;
@@ -102,4 +105,4 @@ wsPlugin.install = function (Vue, options) {
         }
     }
 }
-export default wsPlugin
+export default WsPlugin

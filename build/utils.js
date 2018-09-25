@@ -5,8 +5,8 @@ const Glob = require('glob')
 const pify = require('pify')
 const serialize = require('serialize-javascript');
 const cons = require('consolidate')
-const config = require('../config/env/')
-const appConfig = require('../ws.config')
+const config = require('./env/')
+const appConfig = require('../zhiwang.config')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const pkg = require('../package.json')
 const hash = require('hash-sum')
@@ -89,7 +89,6 @@ exports.styleLoaders = function (options) {
   return output
 }
 
-// nodejs报错方法
 exports.createNotifierCallback = function () {
   const notifier = require('node-notifier')
 
@@ -104,7 +103,7 @@ exports.createNotifierCallback = function () {
       title: pkg.name,
       message: severity + ': ' + error.name,
       subtitle: filename || '',
-      icon: path.join(__dirname, 'logo.png')
+      icon: path.join(__dirname, 'assets/logo.png')
     })
   }
 }
@@ -213,27 +212,28 @@ exports.generateRoutes = async function (isProduction) {
     })
     return cleanChildrenRoutes(routes)
   }
-  const files = await glob('pages/**/*.vue', { cwd: './' })
+  const files = await glob('pages/**/*.vue', { cwd: './src/' })
   // console.log(files)
-  let fileRoutesData = createRoutes(files, './'); 
+  let fileRoutesData = createRoutes(files, './src'); 
   let routesMetaData = appConfig.router.meta;
   _.forEach(routesMetaData, function(rmd) { //add meta {} to fileRoutesData
     let [md, routes] = [rmd.data, rmd.routers];
     _.forEach(routes, function(r) {
       let tempFileRoute = _.find(fileRoutesData, function(o) { return o.path == r; });
+      console.log(tempFileRoute)
       tempFileRoute.meta = Object.assign(tempFileRoute.meta || {}, md);
     });
   });
   let generatedRoutes = appConfig.router.extendRoutes(fileRoutesData, isProduction)
   
-  cons.ejs('./build/bin/router.js', {
+  cons.ejs('./framework/app/router.js', {
     router: {
       routes: generatedRoutes,
       mode: appConfig.router.mode || 'history',
       base: appConfig.router.base || '',
       scrollBehavior: appConfig.router.scrollBehavior,
-      linkActiveClass: appConfig.router.linkActiveClass || 'ws-link-active',
-      linkExactActiveClass: appConfig.router.linkExactActiveClass || 'ws-link-exact-active',
+      linkActiveClass: appConfig.router.linkActiveClass || 'lvx-link-active',
+      linkExactActiveClass: appConfig.router.linkExactActiveClass || 'lvx-link-exact-active',
       fallback: false,
     },
     hash: hash,
@@ -242,9 +242,8 @@ exports.generateRoutes = async function (isProduction) {
     decode: decode
   })
   .then(function (str) {
-    let routerPath = './framework/app/router.js';
-    debugger
-    // console.log(_.unescape(str))
+    mkdirFrameoworkbin();
+    let routerPath = './framework/bin/router.js';
     fs.writeFileSync(routerPath, _.unescape(str) );
   })
   .catch(function (err) {
@@ -254,18 +253,26 @@ exports.generateRoutes = async function (isProduction) {
 function importFiles (path) {
   return require(path)
 }
-exports.generateMain = function (isProduction) {
-  function importPlugins () {
-    let pluginConfigPath = path.join(process.cwd(), 'config', '/plugin')
-    return require(pluginConfigPath)
+
+function mkdirFrameoworkbin () {
+  let isExist = fs.existsSync('./framework/bin');
+  if(!isExist) {
+    fs.mkdirSync('./framework/bin');
   }
-  cons.ejs('./build/bin/main.js', {
+}
+exports.generateMain = function (isProduction) {
+  // function importPlugins () {
+  //   let pluginConfigPath = path.join(process.cwd(), 'config', '/plugin')
+  //   return require(pluginConfigPath)
+  // }
+  cons.ejs('./framework/app/main.js', {
     plugins: appConfig.plugins || [],
     isProduction: isProduction,
     _: _
   })
   .then(function (str) {
-    let routerPath = './framework/app/main.js';
+    mkdirFrameoworkbin();
+    let routerPath = './framework/bin/main.js';
     fs.writeFileSync(routerPath, _.unescape(str) );
   })
   .catch(function (err) {
@@ -274,17 +281,18 @@ exports.generateMain = function (isProduction) {
 }
 exports.generateApp = async function () {
   let [cssGlobal, mws, layouts, parten]= [(appConfig.css || []), (appConfig.router.middleware || []), [], /[^layouts/].*[^.vue]/]
-  let layoutsVue = await glob('layouts/*.vue', { cwd: './' })
+  let layoutsVue = await glob('layouts/*.vue', { cwd: './src/' })
   _.forEach(layoutsVue, function(n){
-    layouts.push({name:n.replace(/^layouts/, '').replace(/\.vue$/, '').replace('/', ''), path: `~/${n}`})
+    layouts.push({name:n.replace(/^layouts/, '').replace(/\.vue$/, '').replace('/', ''), path: `~/src/${n}`})
   })
-  cons.ejs('./build/bin/App.vue', {
+  cons.ejs('./framework/app/App.vue', {
     layouts: layouts,
     mws: mws,
     cssGlo: cssGlobal
   })
   .then(function (str) {
-    let path = './framework/app/App.vue';
+    mkdirFrameoworkbin();
+    let path = './framework/bin/App.vue';
     fs.writeFileSync(path, _.unescape(str) );
   })
   .catch(function (err) {
@@ -293,11 +301,12 @@ exports.generateApp = async function () {
 }
 
 exports.generateAppHtml = async function (isProduction) {
-  cons.ejs('./build/bin/index.html', {
+  cons.ejs('./index.html', {
     isProduction: isProduction
   })
   .then(function (str) {
-    let path = './index.html';
+    mkdirFrameoworkbin();
+    let path = './framework/bin/index.html';
     fs.writeFileSync(path, _.unescape(str) );
   })
   .catch(function (err) {

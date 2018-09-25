@@ -1,0 +1,43 @@
+@import "variables.scss";
+@import "mixins.scss";
+@import "src/data-bar.scss";
+
+.#{$prefix-css}-tooltip-top {
+	 @include tooltip(top);
+}
+.#{$prefix-css}-tooltip-bottom {
+	 @include tooltip(bottom);
+}
+.#{$prefix-css}-text-overflow {
+	 @include text-overflow;
+}
+.#{$prefix-css}-text-decoration-none {
+	 @include text-decoration(none);
+}
+.#{$prefix-css}-text-align-r {
+	 @include text-align(right);
+}
+.#{$prefix-css}-text-align-l {
+	 @include text-align(left);
+}
+.#{$prefix-css}-text-align-c {
+	@include text-align(center);
+}
+.#{$prefix-css}-margin-right-10 {
+	 @include margin(right, 10px);
+}
+.#{$prefix-css}-margin-right-5 {
+	 @include margin(right, 5px);
+}
+.#{$prefix-css}-color-theme {
+	 @include color($theme-color);
+}
+.#{$prefix-css}-display-ib { //inline-block
+	 @include display(inline-block);
+}
+.#{$prefix-css}-display-b { //block
+	 @include display(block);
+}
+.#{$prefix-css}-position-abs { //block
+	 @include position(absolute);
+}

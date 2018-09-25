@@ -1,0 +1,22 @@
+@import "variables.scss";
+
+body{
+  width: 100vw;
+  overflow-y: hidden;
+}
+.iconsprite{
+  display: inline-block;
+}
+.right{
+  float: right;
+}
+
+.left{
+  float: left;
+}
+.lvx-date-editor--datetimerange.lvx-input, .lvx-date-editor--datetimerange.lvx-input__inner{
+  width: 100%;
+}
+.lvx-date-editor--daterange.lvx-input, .lvx-date-editor--daterange.lvx-input__inner, .lvx-date-editor--timerange.lvx-input, .lvx-date-editor--timerange.lvx-input__inner{
+  width: 100%;
+}

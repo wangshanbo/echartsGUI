@@ -3,7 +3,7 @@ function convert (mw) {
     if (typeof mw !== 'function') {
         throw new TypeError('middleware must be a function')
     }
-    if (mw.constructor.name === 'GeneratorFunction') {
+    if (mw.constructor.name == 'GeneratorFunction') {
         return mw
     }
     const converted = function (ctx, next) {
