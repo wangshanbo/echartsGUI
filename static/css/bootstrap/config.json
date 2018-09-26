@@ -131,7 +131,7 @@
     "@screen-sm-max": "(@screen-md-min - 1)",
     "@screen-md-max": "(@screen-lg-min - 1)",
     "@grid-columns": "12",
-    "@grid-gutter-width": "0px",
+    "@grid-gutter-width": "30px",
     "@grid-float-breakpoint": "@screen-sm-min",
     "@grid-float-breakpoint-max": "(@grid-float-breakpoint - 1)",
     "@container-tablet": "(720px + @grid-gutter-width)",
@@ -382,35 +382,8 @@
     "@hr-border": "@gray-lighter"
   },
   "css": [
-    "print.less",
-    "type.less",
-    "code.less",
-    "grid.less",
-    "tables.less",
-    "forms.less",
-    "buttons.less",
-    "responsive-utilities.less",
-    "glyphicons.less",
-    "button-groups.less",
-    "input-groups.less",
-    "navs.less",
-    "navbar.less",
-    "breadcrumbs.less",
-    "pagination.less",
-    "pager.less",
-    "labels.less",
-    "badges.less",
-    "jumbotron.less",
-    "thumbnails.less",
-    "alerts.less",
-    "progress-bars.less",
-    "media.less",
-    "list-group.less",
-    "panels.less",
-    "responsive-embed.less",
-    "wells.less",
-    "close.less"
+    "grid.less"
   ],
   "js": [],
-  "customizerUrl": "http://v3.bootcss.com/customize/?id=b59f4f4e5dc1707353491763177ceab5"
+  "customizerUrl": "<none>"
 }
